@@ -1,0 +1,509 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url(https://db.onlinewebfonts.com/c/75914226e45d53c888d99c55e1033690?family=Ubisoft+Sans+Bold);
+
+html {
+    font-size: 62.5%;
+}
+/* Estilo general para el cuerpo de la página */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f3f5fc;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    padding-bottom: 3em;
+    min-height: 100vh;
+    background-image: url('./assets/img/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    justify-content: center;
+    display: flex;
+}
+
+article {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 80px;
+    margin: 20px;
+
+
+}
+
+/* Estilo del encabezado */
+header {
+
+    width: 60%;
+    margin-bottom: 80px;
+    
+}
+
+/* Estilo principal de la página */
+main {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Estilo del logo */
+#logo {
+    width: auto;
+    height: auto;
+    margin-top: 2rem;
+    margin-left: 1.5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Estilo del título principal */
+h1 {
+    margin-bottom: 0;
+    font-size: 3.5rem;
+    font-family: 'Ubisoft Sans Bold', sans-serif;
+    color: #000000;
+    text-align: center;
+    position: absolute;
+    top: 10px;
+    left: 80px;
+}
+
+/* Contenedor principal izquierdo */
+.left-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    height: 78dvh;
+    width: 680px;
+    margin-left: 220px;
+}
+
+/* Estilo del área de texto */
+textarea {
+    width: 100%;
+    max-width: 577px;
+    height: 64dvh;
+    margin-bottom: 3rem;
+    font-size: 3.2rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    color: #0A3871;
+    border: none;
+    background-color: transparent;
+    overflow: auto;
+    resize: none;
+    box-sizing: border-box;
+}
+
+#inputText::placeholder {
+    color: #0A3871;
+    border-color: #000000;
+    font-size: 32px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+
+/* Estilo del texto informativo */
+.info-text {
+    font-size: 1.2rem;
+    color: #495057;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    gap: 6px;
+}
+
+/* Estilo del ícono de alerta */
+img {
+    align-items: start;
+}
+
+/* Estilo de los botones */
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+/* Estilo de los botones de encriptar y desencriptar */
+.buttons button {
+    height: 67px;
+    padding: 24px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    border-radius: 24px;
+    cursor: pointer;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.encrypt-btn {
+    background-color: #f79c52;
+    color: white;
+    border: none;
+    width: 328px;
+}
+
+.decrypt-btn {
+    background-color: #f3e5bf;
+    color: #0A3871;
+    border: solid 1px #0A3871;
+    width: 328px;
+}
+
+/* Contenedor principal derecho */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 32px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 40rem;
+    margin: 20px;
+    height: 944px;
+    gap: 10rem;
+
+}
+
+/* Estilo del sub-contenedor derecho */
+
+.right-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 40rem;
+    height: 100%;
+}
+
+.output-area{
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 40rem;
+    height: 100%;
+    display: flex;
+}
+
+.output-text {
+    font-size: 24px;
+    color: #495057;
+    display: none;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 150%;
+    overflow-y: scroll;
+    height: 100%;
+}
+
+/* Estilo de los mensajes de salida */
+.output-message, .output-instructions {
+    display: block;
+    text-align: center;
+    width: 90%;
+    justify-content: center;
+}
+
+.output-message {
+    font-weight: bold;
+    color: #343A40;
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    align-items: center;
+}
+
+.output-instructions {
+    color: #495057;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    align-items: center;
+}
+
+/* Contenedor de botones adicionales */
+.button-container {
+    justify-content: space-between;
+    width: 100%;
+    align-content: center;
+    align-items: end;
+}
+
+/* Estilo de los botones de copiar y recargar */
+.copy-btn, .reload-btn {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    border-radius: 24px;
+    cursor: pointer;
+    height: 67px;
+}
+
+.copy-btn {
+    border: 1px solid #0A3871;
+    background-color: white;
+    color: #0A3871;
+}
+
+.floating-message {
+    position: absolute;
+    padding: 5px 10px;
+    background-color: #0A3871;
+    color: white;
+    border-radius: 5px;
+    display: none;
+    z-index: 1000;
+}
+
+
+.reload-btn {
+    border-radius: 50%;
+    border: 1px solid #0A3871;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    color: #0A3871;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* Estilo del contenedor de la imagen */
+.image-container img {
+    width: 320px;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Estilo del pie de página */
+footer {
+    width: 100%;
+    background-color: #130f2b;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-weight: 100;
+    text-align: right;
+    font-size: 12px;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 35px;
+    align-items: center;
+}
+
+.footer-social {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 15px;
+    margin-right: 0px;
+    height: 25px;
+    padding-left: 15px;
+}
+
+li img {
+    height: 25px;
+}
+
+/* Media queries para ajustes responsivos */
+
+@media (max-width: 768px) {
+    /* Ajustes para tablets */
+
+    article {
+        flex-direction: column-reverse;
+        justify-content: center;
+        width: 768px;
+        gap: 0;
+    }
+
+    .left-container, .container, .right-container {
+        width: 688px;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .left-container {
+        margin-top: 130px;
+        height: 697px;
+        margin-bottom: 20px;
+        justify-content: center;
+    }
+
+    .buttons {
+        flex-direction: row;
+        width: 688px;
+    }
+
+    .encrypt-btn, .decrypt-btn {
+        width: 332px;
+    }
+
+    .container {
+        height: 350px;
+        width: 668px;
+        margin-top: 24px;
+    }
+
+    .right-container {
+        height: 350px;
+        width: 688px;
+    }
+
+    .button-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    textarea {
+        font-size: 24px;
+        height: 550px;
+        max-width: 688px;
+    }
+
+    #inputText::placeholder {
+        font-size: 24px;
+    }
+
+    .output-area {
+        height: 350px;
+        width: 688px;
+    }
+
+    .output-text {
+        font-size: 20px;
+    }
+
+    .output-message {
+        font-size: 20px;
+    }
+
+    .output-instructions {
+        font-size: 14px;
+    }
+
+    .image-container img {
+        width: 310px;
+    }
+
+    .button-container {
+        margin: 20px;
+        width: 624px;
+    }
+
+    footer {
+        height: 30px;
+    }
+
+    .footer-social {
+        gap: 5px;
+        padding-left: 10px;
+    }
+}
+
+@media (max-width: 375px) {
+    /* Ajustes para celulares */
+
+    article {
+        flex-direction: column-reverse;
+        justify-content: center;
+        width: 375px;
+        gap: 0;
+    }
+
+    .left-container, .container, .right-container {
+        width: 343px;
+        margin: 10px;    
+        padding: 0px;
+    }
+
+    .left-container {
+        margin-top: 130px;
+        height: 491px;
+        margin-bottom: 20px;
+        justify-content: center;
+    }
+
+    .info-text {
+        width: 100%;
+    }
+
+    .buttons {
+        flex-direction: column;
+        width: 343px;
+    }
+
+    .encrypt-btn, .decrypt-btn {
+        width: 343px;
+    }
+
+    .container {
+        height: 350px;
+        width: 343px;
+        margin-top: 24px;
+    }
+
+    .right-container {
+        height: 350px;
+        width: 343px;
+    }
+
+    .button-container {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 325px;
+    }
+
+    textarea {
+        font-size: 24px;
+        height: 252px;
+        max-width: 343px;
+        margin-bottom: 0;
+    }
+
+    #inputText::placeholder {
+        font-size: 24px;
+    }
+
+    .output-area {
+        height: 350px;
+        width: 343px;
+    }
+
+    .output-text {
+        font-size: 20px;
+    }
+
+    .output-message {
+        font-size: 20px;
+    }
+
+    .output-instructions {
+        font-size: 14px;
+    }
+
+    .image-container img {
+        width: 310px;
+    }
+
+    .footer-social {
+        padding-left: 5px;
+    }
+}

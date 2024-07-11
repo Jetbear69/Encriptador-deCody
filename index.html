@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="favicon.ico" rel="icon">
+    <title>deCody</title>
+</head>
+
+<body>
+    <article>
+        <!-- Logo de la página -->
+        <img id="logo" src="./assets/img/robot_logo.png" alt="Logo">
+        <!-- Título principal -->
+        <h1>deCody</h1>
+        <!-- Contenedor derecho -->
+        <div class="container">
+            <div class="right-container">
+                <!-- Área de salida para el mensaje encriptado/desencriptado -->
+                <div class="output-area" id="outputArea">
+                    <!-- Contenedor de la imagen -->
+                    <div class="image-container">
+                        <img id="randomImage" src="./assets/img/robot3.gif" alt="Imagen Random">
+                    </div>
+                    <!-- Mensajes de salida e instrucciones -->
+                    <p class="output-message" id="outputMessage" style="margin-bottom: 0px;margin-top: 32px;">Ningún
+                        mensaje fue encontrado</p>
+                    <p class="output-instructions" id="outputInstructions" style="margin-bottom: 0px;margin-top: 16px;">
+                        Ingresa el texto que desees encriptar o desencriptar.</p>
+                    <!-- Texto de salida -->
+                    <p class="output-text"></p>
+                    <!-- Botones de copiar y recargar -->
+                    <div class="button-container" id="buttonContainer" style="display: none;">
+                        <button class="copy-btn" onclick="copyToClipboard()">Copiar</button>
+                        <button class="reload-btn" onclick="reloadOutput()">&#x21bb;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <main>
+            <!-- Contenedor izquierdo -->
+            <div class="left-container">
+                <!-- Área de texto para ingresar el mensaje -->
+                <textarea id="inputText" placeholder="Ingrese el texto aquí"></textarea>
+                <!-- Texto informativo -->
+                <p class="info-text">
+                    <img class="alert" src="./assets/img/alerta.png" alt="Alerta">
+                    Solo letras minúsculas y sin acento
+                </p>
+                <!-- Botones de encriptar y desencriptar -->
+                <div class="buttons">
+                    <button class="encrypt-btn" onclick="encrypt()">Encriptar</button>
+                    <button class="decrypt-btn" onclick="decrypt()">Desencriptar</button>
+                </div>
+            </div>
+        </main>
+    </article>
+    <!-- Pie de página -->
+    <footer>
+        <ul class="footer-social">
+            <li><a href="https://app.aluracursos.com/user/oliverdev"><img src="./assets/img/icono-alura.png" alt="Alura"></a></li>
+            <li><a href="https://github.com/Jetbear69?tab=repositories"><img src="./assets/img/icono-github.png" alt="GitHub"></a></li>
+            <li><a href="https://t.me/Oliver_dev"><img src="./assets/img/icono-telegram.png" alt="Telegram"></a></li>
+            <li><a href="https://linkedin.com/in/oliverdev"><img src="./assets/img/icono-linkedin.png" alt="LinkedIn"></a></li>
+            <li><a href="https://x.com/Jetbear69"><img src="./assets/img/icono-x.png" alt="X"></a></li>
+
+        </ul>
+        Alura ONE Challenge&emsp;&copy; 2024 &emsp;
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
