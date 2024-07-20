@@ -10,6 +10,26 @@
 </head>
 
 <body>
+    <!-- Toggle de modo oscuro -->
+    <div class="toggle-container">
+        <div class="toggle" id="darkModeToggle">
+            <img src="./assets/img/sun.png" class="toggle-icon" alt="Left Dark Mode Icon">
+            <label class="switch">
+                <input type="checkbox" id="darkModeCheckbox">
+                <span class="slider round"></span>
+            </label>
+            <img src="/assets/img/moon.png" class="toggle-icon" alt="Right Dark Mode Icon">
+        </div>
+        <!-- Toggle de idioma -->
+        <div class="toggle" id="languageToggle">
+            <img src="/assets/img/spain.png" class="toggle-icon" alt="Left Language Icon">
+            <label class="switch">
+                <input type="checkbox" id="languageCheckbox">
+                <span class="slider round"></span>
+            </label>
+            <img src="/assets/img/uk.png" class="toggle-icon" alt="Right Language Icon">
+        </div>
+    </div>
     <article>
         <!-- Logo de la página -->
         <img id="logo" src="./assets/img/robot_logo.png" alt="Logo">
@@ -22,7 +42,7 @@
                 <div class="output-area" id="outputArea">
                     <!-- Contenedor de la imagen -->
                     <div class="image-container">
-                        <img id="randomImage" src="./assets/img/robot3.gif" alt="Imagen Random">
+                        <img id="robot" src="./assets/img/robot3.gif" alt="Robot">
                     </div>
                     <!-- Mensajes de salida e instrucciones -->
                     <p class="output-message" id="outputMessage" style="margin-bottom: 0px;margin-top: 32px;">Ningún
@@ -65,10 +85,10 @@
             <li><a href="https://t.me/Oliver_dev"><img src="./assets/img/icono-telegram.png" alt="Telegram"></a></li>
             <li><a href="https://linkedin.com/in/oliverdev"><img src="./assets/img/icono-linkedin.png" alt="LinkedIn"></a></li>
             <li><a href="https://x.com/Jetbear69"><img src="./assets/img/icono-x.png" alt="X"></a></li>
-
         </ul>
         Alura ONE Challenge&emsp;&copy; 2024 &emsp;
     </footer>
     <script src="script.js"></script>
 </body>
+
 </html>

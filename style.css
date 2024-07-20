@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-@import url(https://db.onlinewebfonts.com/c/75914226e45d53c888d99c55e1033690?family=Ubisoft+Sans+Bold);
+@import url('https://db.onlinewebfonts.com/c/75914226e45d53c888d99c55e1033690?family=Ubisoft+Sans+Bold');
 
 html {
     font-size: 62.5%;
@@ -7,13 +7,12 @@ html {
 /* Estilo general para el cuerpo de la página */
 body {
     margin: 0;
-    padding: 0;
+    padding: 5rem 0 5rem 0;
     background-color: #f3f5fc;
     font-family: 'Inter', sans-serif;
     position: relative;
-    padding-bottom: 3em;
     min-height: 100vh;
-    background-image: url('./assets/img/background.png');
+    background-image: url('./assets/img/background-day.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -21,15 +20,114 @@ body {
     display: flex;
 }
 
+/* Estilos para los toggles */
+.toggle-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toggle {
+    display: flex;
+    align-items: center;
+}
+
+.toggle-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.left-icon {
+    margin-right: 10px;
+}
+
+.right-icon {
+    margin-left: 10px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 20px;
+    margin: 0 10px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 12px;
+    width: 12px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(14px);
+}
+
+/* Añadir estilo para el contenedor de los botones */
+#darkModeToggle,
+#languageToggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+#languageToggle {
+    top: 60px; 
+}
+
+body.dark-mode {
+    background-image: url('./assets/img/background-night.png');
+    color: white;
+}
+
+body.dark-mode #logo {
+    filter: brightness(0) invert(1);
+}
+
+body.dark-mode h1{
+    color: white;
+}
+
+
+/* Estilo del contenedor principal */
+
 article {
     display: flex;
     justify-content: space-between;
     flex-direction: row-reverse;
     align-items: center;
     gap: 80px;
-    margin: 20px;
-
-
 }
 
 /* Estilo del encabezado */
@@ -37,13 +135,6 @@ header {
 
     width: 60%;
     margin-bottom: 80px;
-    
-}
-
-/* Estilo principal de la página */
-main {
-    display: flex;
-    justify-content: space-around;
 }
 
 /* Estilo del logo */
@@ -91,7 +182,9 @@ textarea {
     font-weight: 400;
     color: #0A3871;
     border: none;
-    background-color: transparent;
+    border-radius: 15px;
+    background-color: gainsboro;
+    opacity: 0.5;
     overflow: auto;
     resize: none;
     box-sizing: border-box;
@@ -103,6 +196,11 @@ textarea {
     font-size: 32px;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
+    opacity:1;
+}
+
+body.dark-mode #inputText::placeholder {
+    color: white;
 }
 
 /* Estilo del texto informativo */
@@ -113,7 +211,7 @@ textarea {
     display: flex;
     align-items: center;
     font-family: 'Inter', sans-serif;
-    font-weight: 400;
+    font-weight: 600;
     gap: 6px;
 }
 
@@ -145,7 +243,7 @@ img {
 .encrypt-btn {
     background-color: #f79c52;
     color: white;
-    border: none;
+    border: solid 1px #0A3871;
     width: 328px;
 }
 
@@ -156,6 +254,10 @@ img {
     width: 328px;
 }
 
+button:hover {
+    opacity: 0.8;
+}
+
 /* Contenedor principal derecho */
 .container {
     display: flex;
@@ -164,7 +266,8 @@ img {
     justify-content: center;
     padding: 20px;
     background-color: white;
-    border-radius: 32px;
+    opacity: 0.9;
+    border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 40rem;
     margin: 20px;
@@ -204,7 +307,7 @@ img {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     line-height: 150%;
-    overflow-y: scroll;
+    overflow-y: hidden;
     height: 100%;
 }
 
@@ -268,7 +371,6 @@ img {
     z-index: 1000;
 }
 
-
 .reload-btn {
     border-radius: 50%;
     border: 1px solid #0A3871;
@@ -322,11 +424,27 @@ li img {
     height: 25px;
 }
 
+body.dark-mode .container, body.dark-mode textarea, body.dark-mode .output-message, body.dark-mode .output-instructions {
+    background-color: #222;
+    color: white;
+}
+
+body.darkmode #inputText::placeholder {
+    color: white;
+}
+
+body.dark-mode .output-text {
+    color: white;
+}
+
+.info-text.error {
+    color: red;
+}
+
+
 /* Media queries para ajustes responsivos */
-
-@media (max-width: 768px) {
     /* Ajustes para tablets */
-
+@media only screen and (max-width: 768px) {
     article {
         flex-direction: column-reverse;
         justify-content: center;
@@ -370,6 +488,8 @@ li img {
     .button-container {
         flex-direction: row;
         justify-content: space-between;
+        margin: 20px;
+        width: 624px;
     }
 
     textarea {
@@ -403,24 +523,14 @@ li img {
         width: 310px;
     }
 
-    .button-container {
-        margin: 20px;
-        width: 624px;
-    }
-
-    footer {
-        height: 30px;
-    }
-
     .footer-social {
         gap: 5px;
         padding-left: 10px;
     }
 }
 
-@media (max-width: 375px) {
     /* Ajustes para celulares */
-
+@media only screen and (max-width: 375px) {
     article {
         flex-direction: column-reverse;
         justify-content: center;

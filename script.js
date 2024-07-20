@@ -1,91 +1,123 @@
-document.addEventListener("DOMContentLoaded", function() {
-    let inputText = document.getElementById('inputText');
-    let infoText = document.querySelector('.info-text');
-    let encryptButton = document.querySelector('.encrypt-btn');
-    let copyButton = document.querySelector('.copy-btn');
-    let copyMessage = document.createElement('div');
+// Selección de elementos
+const darkModeToggle = document.getElementById('darkModeCheckbox');
+const languageToggle = document.getElementById('languageCheckbox');
+const inputText = document.getElementById('inputText');
+const outputMessage = document.getElementById('outputMessage');
+const outputInstructions = document.getElementById('outputInstructions');
+const outputText = document.querySelector('.output-text');
+const body = document.body;
+const copyButton = document.querySelector('.copy-btn');
+const reloadButton = document.querySelector('.reload-btn');
+const buttonContainer = document.getElementById('buttonContainer');
+const infotext = document.querySelector('.info-text');
+const alertIcon = document.querySelector('.alert');
+const robot = document.getElementById('robot');
 
-    // Crear el mensaje flotante y agregarlo al DOM
+// Cambio de modo oscuro
+if (darkModeToggle) {
+    darkModeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        const slider = darkModeToggle.querySelector('.slider');
+        if (slider) {
+            slider.classList.toggle('active');
+        }
+    });
+}
+
+// Cambio de idioma
+document.addEventListener('DOMContentLoaded', () => {
+    languageToggle.checked = false;
+    const isSpanish = !languageToggle.checked;
+    toggleLanguage(isSpanish);
+
+    languageToggle.addEventListener('change', () => {
+        const isSpanish = !languageToggle.checked;
+        toggleLanguage(isSpanish);
+    });
+
+    function toggleLanguage(isSpanish) {
+        const encryptBtn = document.querySelector('.encrypt-btn');
+        const decryptBtn = document.querySelector('.decrypt-btn');
+        const inputText = document.getElementById('inputText');
+        const outputMessage = document.getElementById('outputMessage');
+        const outputInstructions = document.getElementById('outputInstructions');
+        const copyButton = document.querySelector('.copy-btn');
+
+        encryptBtn.textContent = isSpanish ? 'Encriptar' : 'Encrypt';
+        decryptBtn.textContent = isSpanish ? 'Desencriptar' : 'Decrypt';
+        inputText.placeholder = isSpanish ? 'Ingrese el texto aquí' : 'Enter text here';
+        outputMessage.textContent = isSpanish ? 'Ningún mensaje fue encontrado' : 'No message was found';
+        outputInstructions.textContent = isSpanish ? 'Ingresa el texto que desees encriptar o desencriptar.' : 'Enter the text you want to encrypt or decrypt.';
+        copyButton.textContent = isSpanish ? 'Copiar' : 'Copy';
+        infotext.innerHTML = isSpanish ? '<img class="alert" src="./assets/img/alerta.png" alt="Alerta"> Solo letras minúsculas y sin acento' : '<img class="alert" src="./assets/img/alerta.png" alt="Alert"> Only lowercase letters without accents';
+    }
+
+    // Validar el texto
+    function validateInput(text) {
+        const isValid = /^[a-z]+$/.test(text);
+        infotext.classList.toggle('error', !isValid);
+        alertIcon.classList.toggle('error', !isValid);
+        return isValid;
+    }
+
+    inputText.addEventListener('input', () => {
+        validateInput(inputText.value);
+    });
+
+    // Encriptar el texto
+    function encrypt() {
+        const text = inputText.value;
+        if (validateInput(text)) {
+            const encryptedText = text.replace(/e/g, 'enter')
+                .replace(/i/g, 'imes')
+                .replace(/a/g, 'ai')
+                .replace(/o/g, 'ober')
+                .replace(/u/g, 'ufat');
+            displayOutput(encryptedText);
+            robot.style.display = 'none'; 
+        }
+    }
+
+    // Desencriptar el texto
+    function decrypt() {
+        const text = inputText.value;
+        if (validateInput(text)) {
+            const decryptedText = text.replace(/enter/g, 'e')
+                .replace(/imes/g, 'i')
+                .replace(/ai/g, 'a')
+                .replace(/ober/g, 'o')
+                .replace(/ufat/g, 'u');
+            displayOutput(decryptedText);
+            robot.style.display = 'none'; 
+        }
+    }
+
+    // Mostrar el texto de salida
+    function displayOutput(text) {
+        outputText.textContent = text;
+        outputText.style.display = 'block';
+        outputMessage.style.display = 'none';
+        outputInstructions.style.display = 'none';
+        robot.style.display = 'none';
+        buttonContainer.style.display = 'flex';
+    }
+
+    // Crear el mensaje flotante para mostrar el texto copiado
+    const copyMessage = document.createElement('div');
     copyMessage.id = 'copyMessage';
     copyMessage.innerText = "Texto Copiado!";
     copyMessage.classList.add('floating-message');
     document.body.appendChild(copyMessage);
 
-    // Validar el texto ingresado
-    function validateText() {
-        let text = inputText.value;
-        let isValid = /^[a-z]+$/.test(text);
-        
-        if (!isValid) {
-            infoText.style.color = 'red';
-            encryptButton.disabled = true;
-        } else {
-            infoText.style.color = '';
-            encryptButton.disabled = false;
-        }
-    }
-
-    // Escuchar los cambios en el área de texto
-    inputText.addEventListener('input', validateText);
-
-    // Encriptar el texto
-    function encrypt() {
-        if (encryptButton.disabled) return;
-        let text = inputText.value;
-        let encryptedText = text
-            .replace(/e/g, "enter")
-            .replace(/i/g, "imes")
-            .replace(/a/g, "ai")
-            .replace(/o/g, "ober")
-            .replace(/u/g, "ufat");
-
-        let outputText = document.querySelector('.output-text');
-        let outputMessage = document.getElementById('outputMessage');
-        let outputInstructions = document.getElementById('outputInstructions');
-        let randomImage = document.getElementById('randomImage');
-        let buttonContainer = document.getElementById('buttonContainer');
-
-        outputText.innerText = encryptedText;
-        outputText.style.display = 'block';
-        randomImage.style.display = 'none';
-        outputMessage.style.display = 'none';
-        outputInstructions.style.display = 'none';
-        buttonContainer.style.display = 'flex';
-    }
-
-    // Desencriptar el texto
-    function decrypt() {
-        let text = inputText.value;
-        let decryptedText = text
-            .replace(/enter/g, "e")
-            .replace(/imes/g, "i")
-            .replace(/ai/g, "a")
-            .replace(/ober/g, "o")
-            .replace(/ufat/g, "u");
-
-        let outputText = document.querySelector('.output-text');
-        let outputMessage = document.getElementById('outputMessage');
-        let outputInstructions = document.getElementById('outputInstructions');
-        let randomImage = document.getElementById('randomImage');
-        let buttonContainer = document.getElementById('buttonContainer');
-
-        outputText.innerText = decryptedText;
-        outputText.style.display = 'block';
-        randomImage.style.display = 'none';
-        outputMessage.style.display = 'none';
-        outputInstructions.style.display = 'none';
-        buttonContainer.style.display = 'flex';
-    }
-
     // Copiar el texto al portapapeles
     function copyToClipboard() {
-        let outputText = document.querySelector('.output-text').innerText;
-        navigator.clipboard.writeText(outputText).then(() => {
+        let outputTextContent = document.querySelector('.output-text').innerText;
+        navigator.clipboard.writeText(outputTextContent).then(() => {
             // Mostrar el mensaje flotante
             copyMessage.style.display = 'block';
             // Posicionar el mensaje flotante sobre el botón de copiar
             let rect = copyButton.getBoundingClientRect();
-            copyMessage.style.top = `${rect.top - -100}px`;
+            copyMessage.style.top = `${rect.top - 30}px`;
             copyMessage.style.left = `${rect.left + rect.width / 2 - copyMessage.offsetWidth / 2}px`;
 
             setTimeout(() => {
@@ -94,19 +126,20 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // Restablecer el área de salida a su estado original
+    reloadButton.addEventListener('click', reloadOutput);
     function reloadOutput() {
-        document.querySelector('.output-text').style.display = 'none';
-        document.getElementById('randomImage').style.display = 'block';
-        document.getElementById('outputMessage').style.display = 'block';
-        document.getElementById('outputInstructions').style.display = 'block';
-        document.querySelector('.output-text').innerText = '';
-        document.getElementById('buttonContainer').style.display = 'none';
+        outputText.textContent = '';
+        outputText.style.display = 'none';
+        buttonContainer.style.display = 'none';
+        outputMessage.style.display = 'block';
+        outputInstructions.style.display = 'block';
+        alertIcon.style.display = 'inline-block';
+        robot.style.display = 'block'; 
     }
 
     // Asignar funciones a los botones
-    encryptButton.addEventListener('click', encrypt);
+    document.querySelector('.encrypt-btn').addEventListener('click', encrypt);
     document.querySelector('.decrypt-btn').addEventListener('click', decrypt);
     copyButton.addEventListener('click', copyToClipboard);
-    document.querySelector('.reload-btn').addEventListener('click', reloadOutput);
+    reloadButton.addEventListener('click', reloadOutput);
 });
