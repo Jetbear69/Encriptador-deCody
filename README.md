@@ -1,6 +1,7 @@
 <h1 align="center">Proyecto Encriptador</h1>
 
-![banner](https://github.com/user-attachments/assets/d386cf6f-0fcb-4f05-acd1-5094900ee28b)
+![newbanner](https://github.com/user-attachments/assets/501b4941-6f91-4720-9f86-9cd5061b279b)
+
 <div align="center">
 Hecho con ❤️ por Oliver_dev
 </div>
@@ -16,9 +17,9 @@ Hecho con ❤️ por Oliver_dev
 ### Descripción  📖 
 
 <div align="center">
-  
-![insignia](https://github.com/user-attachments/assets/c542f9aa-8e0c-481b-9539-1bb7eadc84a7)  
-  
+ 
+![G7](https://github.com/user-attachments/assets/cc956b17-4ae2-450b-9c0b-3917b171c946)
+
 </div>
 
   <h3 align="center"><strong>#challengeonelogicalatam</strong></h3>
@@ -68,15 +69,18 @@ La palabra o frase encriptada se muestra en la sección derecha y se puede conve
   
 ### Versión Desktop:
 
-![mode-desktop](https://github.com/user-attachments/assets/741273cb-71c7-4373-8b3b-ddaa28f23293)
+![daydesktop](https://github.com/user-attachments/assets/5fb2537a-14fa-4f4d-806c-2dff28cd79c7)
+
+
+![nightdesktop](https://github.com/user-attachments/assets/34eaf276-db5e-4b64-bd26-ffc9f97d40f4)
 
 ### Versión Tablet:
 
-![mode-tablet](https://github.com/user-attachments/assets/06e9646e-6856-428b-99e2-1125c209ed22)
+![tabletmode](https://github.com/user-attachments/assets/f5532af8-319c-461c-94b5-537704d35609)
 
 ### Versión Móvil:
 
-![mode-movil](https://github.com/user-attachments/assets/f072227e-1f60-4033-9708-e3e6f1b77a0d)
+![mobilemode](https://github.com/user-attachments/assets/60fd2713-f4c6-4d37-9c36-406cc9278bbd)
 
 </div>
 
