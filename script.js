@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Validar el texto
     function validateInput(text) {
-        const isValid = /^[a-z]+$/.test(text);
+        const isValid = /^[a-z\s]+$/.test(text);
         infotext.classList.toggle('error', !isValid);
         alertIcon.classList.toggle('error', !isValid);
         return isValid;
@@ -105,14 +105,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Crear el mensaje flotante para mostrar el texto copiado
     const copyMessage = document.createElement('div');
     copyMessage.id = 'copyMessage';
-    copyMessage.innerText = "Texto Copiado!";
     copyMessage.classList.add('floating-message');
+
     document.body.appendChild(copyMessage);
 
     // Copiar el texto al portapapeles
     function copyToClipboard() {
         let outputTextContent = document.querySelector('.output-text').innerText;
         navigator.clipboard.writeText(outputTextContent).then(() => {
+            copyMessage.innerText = !languageToggle.checked ? '¡Copiado!' : 'Copied!';
             // Mostrar el mensaje flotante
             copyMessage.style.display = 'block';
             // Posicionar el mensaje flotante sobre el botón de copiar
@@ -127,6 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     reloadButton.addEventListener('click', reloadOutput);
+
+    // Recargar el área de salida
     function reloadOutput() {
         outputText.textContent = '';
         outputText.style.display = 'none';
