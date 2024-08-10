@@ -187,6 +187,7 @@ textarea {
     overflow: auto;
     resize: none;
     box-sizing: border-box;
+    scrollbar-width: none;
 }
 
 #inputText::placeholder {
@@ -306,8 +307,9 @@ button:hover {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     line-height: 150%;
-    overflow-y: hidden;
+    overflow-y: auto;
     height: 100%;
+    scrollbar-width: none;
 }
 
 /* Estilo de los mensajes de salida */
